@@ -1,5 +1,14 @@
+from login import registration
+
+
 def main():
-    pass
+    while True:
+        print("Hello")
+        user = registration()
+        if user:
+            print(user)
+
+
 
 
 if __name__ == "__main__":
