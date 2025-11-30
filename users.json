@@ -1,20 +1,32 @@
 {
-  "Brik":{
-    "password": "cap",
-    "pogrom": "",
-    "courses": [],
-    "admin": true
-  },
-  "Anton":{
-    "password": "123",
-    "pogrom": "AI",
-    "disciplines": ["MATH101", "CS201"],
-    "admin": false
-  },
-  "Dasha":{
-    "password": "qw",
-    "pogrom": "EBD",
-    "disciplines": ["MATH101", "CS201"],
-    "admin": false
-  }
+    "Brik": {
+        "password": "cap",
+        "pogrom": "",
+        "courses": [],
+        "admin": true
+    },
+    "Anton": {
+        "password": "123",
+        "pogrom": "AI",
+        "disciplines": [
+            "MATH101",
+            "CS201"
+        ],
+        "admin": false
+    },
+    "Dasha": {
+        "password": "qw",
+        "pogrom": "EBD",
+        "disciplines": [
+            "MATH101",
+            "CS201"
+        ],
+        "admin": false
+    },
+    "1": {
+        "password": "1",
+        "pogrom": "1",
+        "disciplines": [],
+        "admin": false
+    }
 }
