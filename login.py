@@ -50,7 +50,7 @@ def login():
     return None
 
 
-def sign_up_user(admin= False):
+def sign_up(admin= False):
     """
     якщо реєструвати юзера, то input user= True
     якщо реєструвати адміна, то input user= False
@@ -124,7 +124,7 @@ def registration():
             print("Failure")
 
     elif select_action == 2:
-        if sign_up_user():
+        if sign_up():
             print("You have successfully registered on the site")
         else:
             print("Something went wrong")
