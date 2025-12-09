@@ -1,4 +1,4 @@
-from check_user_input import input_to_int
+from helper_functions import lst_input_to_int
 from configuration import USER_DATABASE_NAME
 
 import os.path
@@ -32,7 +32,7 @@ def try_login_from_database(user_login: str, password: str) -> bool:
 def login():
 
     # можливо існує краще місце для цього
-    if not os.path.exists("python.exe"):
+    if not os.path.exists(USER_DATABASE_NAME):
         print("File does not exist, invalid configuration file")
         return None
 
@@ -52,8 +52,9 @@ def login():
 
 def sign_up():
 
+
     # можливо існує краще місце для цього
-    if not os.path.exists("python.exe"):
+    if not os.path.exists(USER_DATABASE_NAME):
         print("File does not exist, invalid configuration file")
         return None
 
@@ -69,7 +70,7 @@ def sign_up():
 
     # 2. Перевіряємо, чи існує користувач, і додаємо нового
     if user_login in data:
-        print("Користувач з таким логіном вже існує!")
+        print("A user with such a login already exists!")
         return None
     else:
         # ДОДАЄМО нового користувача до існуючого словника
@@ -84,7 +85,7 @@ def sign_up():
     with open(USER_DATABASE_NAME, "w", encoding='utf-8') as file:
         # indent=4 робить файл читабельним (з відступами), як у твоєму прикладі
         json.dump(data, file, indent= (file_len + 1), ensure_ascii=False)
-        print("Користувача успішно додано!")
+        print("User successfully added!")
         return user_login
 
 
@@ -93,19 +94,8 @@ def registration():
 
     :return: повертає username зареєстрованого учасника
     """
-    select_action = input_to_int("""
-        1 - log in to the account
-        2 - sign up to the account
-        3 - quit
-        """)
-    while select_action not in [1, 2, 3]:
-        print("Invalid input")
-        select_action = input_to_int("""
-        1 - log in to the account
-        2 - sign up to the account
-        3 - quit
-            """)
 
+    select_action = lst_input_to_int(["log in to the account", "sign up to the account", "quit"])
 
 
     if select_action == 1:
