@@ -62,7 +62,7 @@ def make_good_input(choices: list) -> str:
     return "\n".join(result_lst)
 
 
-def input_to_int(what_you_want_to_ask, max_value= None, min_value= None):
+def input_to_int(what_you_want_to_ask, max_value= None, min_value= None) -> int:
     user_input = input(f"{what_you_want_to_ask}")
 
 
