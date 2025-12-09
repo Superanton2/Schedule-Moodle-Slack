@@ -1,14 +1,30 @@
 import requests
+import random
 
-url = "https://randomuser.me/api/"
+url = "https://randomuser.me/api/?results=100"
 
 def get_names():
     response = requests.get(url)
     data = response.json()
+    students = []
     lst = data["results"]
-    dct = lst[0]
-    dct_name = dct["name"]
-    first = dct_name["first"]
-    last = dct_name["last"]
-    print(first, last)
-get_names()
+    for dct in lst:
+        dct_name = dct["name"]
+        first = dct_name["first"]
+        last = dct_name["last"]
+        name = str(first + " " + last)
+        students.append(name)
+    return students
+
+programs = ["AI", "SE"]
+courses = ["CS101", "CS201", "MATH101", "MATH115", "MATH111"]
+url2 = "https://makemeapassword.ligos.net/api/v1/alphanumeric/json?c=100&l=8"
+def get_password():
+    response = requests.get(url2)
+    data = response.json()
+    passwords = data["pws"]
+    return passwords
+
+passwords = get_password()
+names = get_names()
+users_data = {name: {"password": password, "program": random.choice(programs), "courses": random.sample(courses, 3)} for name, password in zip(names, passwords)}
