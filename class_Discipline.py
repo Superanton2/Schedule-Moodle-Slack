@@ -1,4 +1,4 @@
-from User import User
+from class_User import User
 
 class Discipline:
     def __init__(self, name: str, teacher: str, enrolled: list):

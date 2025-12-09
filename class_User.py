@@ -1,4 +1,4 @@
-from Discipline import Discipline
+from class_Discipline import Discipline
 import json
 
 class User:
