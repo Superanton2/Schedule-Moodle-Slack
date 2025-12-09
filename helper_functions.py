@@ -4,6 +4,7 @@ RESET = "\033[0m"
 RED = "\033[38;5;160m"
 YELLOW = "\033[38;5;220m"
 BLUE = "\033[0;36;40m"
+GREEN = "\33[92m"
 
 def input_to_int(what_you_want_to_ask):
     user_input = input(f"{what_you_want_to_ask}: ")

@@ -1,4 +1,4 @@
-from helper_functions import lst_input_to_int
+from helper_functions import lst_input_to_int, GREEN, RED, RESET
 from configuration import USER_DATABASE_NAME
 
 import os.path
@@ -42,10 +42,10 @@ def login():
         user_password = input("Enter your password: ")
 
         if try_login_from_database(user_login, user_password):
-            print("Correct")
+            print(f"{GREEN}Correct{RESET}")
             return user_login
         else:
-            print(f"Wrong password. Try again. You have {3 - tries} tries left")
+            print(f"{RED}Wrong password{RESET}. Try again. You have {3 - tries} tries left")
             tries += 1
     return None
 
@@ -55,7 +55,7 @@ def sign_up():
 
     # можливо існує краще місце для цього
     if not os.path.exists(USER_DATABASE_NAME):
-        print("File does not exist, invalid configuration file")
+        print(f"{RED}File does not exist, invalid configuration file{RESET}")
         return None
 
     user_login = input("Enter your login: ")
@@ -70,7 +70,7 @@ def sign_up():
 
     # 2. Перевіряємо, чи існує користувач, і додаємо нового
     if user_login in data:
-        print("A user with such a login already exists!")
+        print(f"{RED}A user with such a login already exists!{RESET}")
         return None
     else:
         # ДОДАЄМО нового користувача до існуючого словника
@@ -85,7 +85,7 @@ def sign_up():
     with open(USER_DATABASE_NAME, "w", encoding='utf-8') as file:
         # indent=4 робить файл читабельним (з відступами), як у твоєму прикладі
         json.dump(data, file, indent= (file_len + 1), ensure_ascii=False)
-        print("User successfully added!")
+        print(f"{GREEN}User successfully added!{RESET}")
         return user_login
 
 
