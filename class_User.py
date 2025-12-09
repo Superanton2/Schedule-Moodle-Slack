@@ -2,10 +2,11 @@ from class_Discipline import Discipline
 import json
 
 class User:
-    def __init__(self, name: str, program:str, disciplines: list):
+    def __init__(self, name: str, program:str, disciplines: list, admin_status: bool):
         self.name = name
         self.program = program
         self.disciplines = disciplines
+        self.admin = admin_status
 
     def __str__(self):
         return f"{self.name} is on {self.program} and enrolled to {self.disciplines}"
