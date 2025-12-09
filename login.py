@@ -1,5 +1,5 @@
 from helper_functions import lst_input_to_int, GREEN, RED, RESET
-from configuration import USER_DATABASE_NAME
+from configuration import USER_DATABASE_NAME, PROGRAMS
 
 import os.path
 import json
@@ -50,36 +50,53 @@ def login():
     return None
 
 
-def sign_up():
-
+def sign_up_user(admin= False):
+    """
+    якщо реєструвати юзера, то input user= True
+    якщо реєструвати адміна, то input user= False
+    :param admin: те кого ми будемо реєктрувати
+    :return: імʼя людини яку ми зареєстрували
+    """
 
     # можливо існує краще місце для цього
     if not os.path.exists(USER_DATABASE_NAME):
         print(f"{RED}File does not exist, invalid configuration file{RESET}")
         return None
 
-    user_login = input("Enter your login: ")
-    user_password = input("Enter your password: ")
-    user_pogrom = input("Enter your program: ")
-
-
-
+    # отримуємо данні з файлу
     with open(USER_DATABASE_NAME, "r") as file:
         data = json.loads(file.read())
         file_len = len(data)
 
-    # 2. Перевіряємо, чи існує користувач, і додаємо нового
-    if user_login in data:
+
+    user_login = input("Enter your login: ")
+    # якщо існує вже така людина, то питаємо поки не дасть норм відповідь
+    while user_login in data:
         print(f"{RED}A user with such a login already exists!{RESET}")
-        return None
+        user_login = input("Enter your login: ")
+
+
+    user_password = input("Enter your password: ")
+
+
+    # якщо ми передали до адміна, то
+    if admin:
+        user_program = ""
+        data_admin = True
     else:
-        # ДОДАЄМО нового користувача до існуючого словника
-        data[user_login] = {
-            "password": user_password,
-            "pogrom": user_pogrom,
-            "disciplines": [],
-            "admin": False
-        }
+        user_program = PROGRAMS[lst_input_to_int(PROGRAMS) - 1]
+        data_admin = False
+
+
+    # 2. Перевіряємо, чи існує користувач, і додаємо нового
+
+    # ДОДАЄМО нового користувача до існуючого словника
+    data[user_login] = {
+        "password": user_password,
+        "program": user_program,
+        "disciplines": [],
+        "admin": data_admin
+    }
 
     # 3. Перезаписуємо файл повністю (режим "w")
     with open(USER_DATABASE_NAME, "w", encoding='utf-8') as file:
@@ -107,7 +124,7 @@ def registration():
             print("Failure")
 
     elif select_action == 2:
-        if sign_up():
+        if sign_up_user():
             print("You have successfully registered on the site")
         else:
             print("Something went wrong")

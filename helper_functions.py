@@ -50,6 +50,7 @@ def lst_input_to_int(choices: list) -> int:
             user_input = input(f"{question}\n» ")
         user_input = int(user_input)
 
+    user_input = int(user_input)
 
     return user_input
 
