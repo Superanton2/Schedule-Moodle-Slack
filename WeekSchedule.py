@@ -4,8 +4,8 @@ import random
 class WeekData:
     ALL_CLASSROOMS = ["1.08.01", "1.08.02", "1.08.03", "1.08.04"]
 
-    def __init__(self, file, subjects_file):
-        self.file = file
+    def __init__(self, schedule_file, subjects_file):
+        self.schedule_file = schedule_file
         self.subjects_file = subjects_file
         self.students = []
         self.import_data()
@@ -30,18 +30,20 @@ class WeekData:
         for subject in self.subjects:
             for i in range(2):
                 slot = self.get_a_slot()
+
+                while self.data[slot[0]][slot[1]][slot[2]] != "":
+                    slot = self.get_a_slot()
                 self.data[slot[0]][slot[1]][slot[2]] = subject
-        print(self.data)
         self.upload_data()
 
 
     def import_data(self):
-        with open(self.file, "r") as f:
+        with open(self.schedule_file, "r") as f:
             self.data = json.load(f)
 
 
     def upload_data(self):
-        with open(self.file, "w") as f:
+        with open(self.schedule_file, "w") as f:
             json.dump(self.data, f, indent=2)
 
 
@@ -84,9 +86,3 @@ class WeekData:
     def to_visualize(self):
         return self.data
 
-
-week = WeekData("Schedule.json", "subjects.json")
-print(week.data)
-print(week.subjects)
-week.random_schedule()
-week.random_schedule()
