@@ -88,4 +88,16 @@ def input_to_int(what_you_want_to_ask, max_value= None, min_value= None):
     return user_input
 
 
+# def print_horizontal_lines(self):
+#     pass
+
+# def add_line_to_coordinate(self, start_cord: tuple[int, int], finish_cord: tuple[int, int]):
+#
+#     if not self._check_write_to_coordinate(start_cord[0], start_cord[1], ""):
+#         return False
+#     if not self._check_write_to_coordinate(finish_cord[0], start_cord[1], ""):
+#         return False
+#
+#     self.window_vertical_lines.append( (start_cord, finish_cord) )
+#     return True
 
