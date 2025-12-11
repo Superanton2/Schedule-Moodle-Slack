@@ -1,5 +1,4 @@
 import json
-import random
 
 class User:
     def __init__(self, name: str, program:str, disciplines: list):
@@ -10,29 +9,51 @@ class User:
     def __str__(self):
         return f"{self.name} is on {self.program} and enrolled to {self.disciplines}"
 
+    def __checker__(self, discipline):
+        counter = 0
+        with (open("schedule.json", "r") as file):
+            for line in file.readlines():
+                schedule = json.loads(line)
+                for day in schedule:
+                    for pair in day:
+                        for subject in pair.values():
+                            if subject != discipline or subject in self.disciplines:
+                                continue
+                            elif subject == discipline and not subject in self.disciplines:
+                                counter = 1
+                            else:
+                                continue
+        return counter
+
     def enroll(self, discipline):
         if discipline in self.disciplines:
             print("Student is already enrolled on this discipline")
+            return False
         else:
-            with open("schedule.json", "a") as file:
-                for line in file.readlines():
-                    schedule = json.loads(line)
-                    for day in schedule:
-                        for pair in day:
-                            subjects = []
-                            for subject in pair.values():
-                                subjects.append(subject)
-
-                                if not subject in self.disciplines:
-                                    self.disciplines.append(subject)
-                                    room = random.choice(schedule[day][pair].keys())
-                                    if not schedule[day][pair][room]:
-                                        schedule[day][pair][room] = subject
-
-                                    with open("users.json", "w") as file:
-                                    print(f"You was successfully enrolled to {discipline}")
-
-
+            counter = self.__checker__(discipline)
+            if counter == 1:
+                answers = ["y", "n"]
+                ans = input("No free places for this group. Do you want to try pick another group? [y/n]")
+                while not ans.lower() in answers:
+                    ans = input("Invalid answer. Do you want to try pick another group? [y/n]")
+                if ans == "y":
+                    discipline = list(discipline)
+                    if discipline[:-1] == "1":
+                        discipline[:-1] = "2"
+                        dis = "".join(discipline)
+                        counter2 = self.__checker__(dis)
+                        counter += counter2
+                        if counter == 1:
+                            print("No free places for you on those discipline")
+                        elif counter == 2:
+                            with open("users.json", "w") as file:
+                                data = json.load(file)
+                                data[self.name]["courses"].append(discipline)
+                                print(f"You was successfully enrolled to {discipline}")
+                        return True
+                else:
+                    print(f"You was not enrolled on {discipline}")
+                    return False
 
     def leave(self, discipline):
         if not self.name in discipline.enrolled:
