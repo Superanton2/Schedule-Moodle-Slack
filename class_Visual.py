@@ -1,6 +1,5 @@
 from helper_functions import RED, RESET
-
-import os
+from configuration import day_encoder, pair_time_encoder
 
 
 class Visual:
@@ -11,7 +10,7 @@ class Visual:
         self.window_height = None
         self.block_width = None
         self.block_height = None
-
+        self.window_vertical_lines = []
 
     def create_window(self, window_width: int, window_height: int, block_width: int, block_height: int) -> int:
         self.window_width = window_width - 1
@@ -132,12 +131,38 @@ class Visual:
         # запис по кординатам
         for index in range(len(content)):
 
+            # sep = " " * (self.block_width - len(content[index]))
+            #
+            # self.window[x_cord][y_cord][index - (self.block_height - 1)] = content[index] + sep
+
+
             sep = " " * (self.block_width - len(content[index]))
+            target_index = (self.block_height - 1) - index
 
-            self.window[x_cord][y_cord][index - (self.block_height - 1)] = content[index] + sep
-
+            # Записуємо рядок у правильну комірку блоку
+            self.window[x_cord][y_cord][target_index] = content[index] + sep
 
         return True
+
+    def _print_line(self,y: int, line: int, vertical_sep= "", horizontal_sep= ""):
+
+        for x in range(self.window_width + 1):
+
+            print(self.window[x][(self.window_height - 1) - y][(self.block_height - 1) - line], end=vertical_sep)
+
+            lines_cord = [line for line in self.window_vertical_lines]
+            for horizontal_line in lines_cord:
+                if horizontal_line[0] == (x, (self.window_height - 1) - y):
+                    print("┃", end="")
+
+        if (self.block_height - 1) - line == 0:
+            print()
+            # horizontal_line = (horizontal_sep * (self.block_width + 1)) * (self.window_width + 1)
+            # print(horizontal_line, end= "")
+            horizontal_line = ((horizontal_sep * self.block_width) + "·") * (self.window_width + 1)
+            print(horizontal_line, end="")
+
+        print()
 
     def print_window(self, vertical_sep= "", horizontal_sep= ""):
         # self.clear_window()
@@ -147,23 +172,45 @@ class Visual:
 
             for line in range(self.block_height):
 
-                for x in range(self.window_width + 1):
-
-                    print(self.window[x][(self.window_height - 1) - y][(self.block_height - 1) - line], end= vertical_sep)
-
-                if (self.block_height - 1) - line == 0:
-                    print()
-                    # horizontal_line = (horizontal_sep * (self.block_width + 1)) * (self.window_width + 1)
-                    # print(horizontal_line, end= "")
-                    horizontal_line = ((horizontal_sep * self.block_width) + "·") * (self.window_width + 1)
-                    print(horizontal_line, end= "")
-
-                print()
-            # [(self.block_height - 1) - line]
+                self._print_line(y, line, vertical_sep, horizontal_sep)
 
         return self.window
 
-    def print_horizontal_lines(self):
+    def input_day_lessons(self, day: str, schedule_data: dict[str, dict[str, str]] ):
+        # {"Pair1": {"1.08.01": CS201"}}}
+
+        x_encoded_day = day_encoder[day]
+
+        vis.write_lst_to_coordinate(x_encoded_day, 4, ["", f" {day.upper()}", "", ""])
+
+        for pair in schedule_data:
+            discipline_tag =  [x for x in schedule_data[pair].values()][0]
+            if discipline_tag == "":
+                continue
+            encoded_pair = pair_time_encoder[pair]
+            y_encoded = encoded_pair[0]
+
+
+            classroom =  [x for x in schedule_data[pair].keys()][0]
+            time = encoded_pair[1]
+
+            data_to_add = [
+                f" {discipline_tag}",
+                f" {classroom}",
+                "",
+                f" {time}",
+            ]
+
+            self.write_lst_to_coordinate(x_encoded_day, y_encoded, data_to_add)
+
+    def input_week_lessons(self, schedule_data: dict[str, dict] ):
+        # {"Monday": {"Pair1": {"1.08.01": CS201"}}}
+
+
+
+
+
+
         pass
 
     # def clear_window(self):
@@ -171,55 +218,29 @@ class Visual:
 
 
 vis = Visual()
-vis.create_window(3, 3, 10, 3)
+vis.create_window(6, 6, 12, 4)
 print()
-# vis.write_str_to_coordinate(0, 0,   "to in")
 
-# vis.write_lst_to_coordinate(1, 1, ["444irasntieans4", "Я"])
-# vis.write_lst_to_coordinate(1, 1, ["1", "Я тут", ""])
 
-print()
+from configuration import LOGO
+
+vis.write_lst_to_coordinate(0, 4, LOGO)
+vis.write_lst_to_coordinate(0, 3, ["By Anton", "   Andrew", "   Katya"])
+
+
+# vis.write_lst_to_coordinate(1, 1, [f" Math115", " 1.08.2", " Куля Д.", "1"])
+
+
+data = {"Pair1": {"1.08.01": "Math115"}}
+vis.input_day_lessons("Monday", data)
+
+
+
+# vis.add_line_to_coordinate((0, 0), (1, 0))
+# vis.add_line_to_coordinate((1, 1), (2, 1))
 
 vis.print_window(vertical_sep= "│", horizontal_sep= "─")
 print()
-
 vis.print_window(vertical_sep= "┃", horizontal_sep= "━")
-
-
-
-
-
-"""
-━
-┃
-┏┳┓
-┣╋┫
-
-┗┻┛
-"""
-
-
-#
-# # метод виводу розкладу на тиждень
-# # переключення між тижнями
-#
-# # from tqdm import tqdm
-# # import time
-# #
-# # # range(100) — це загальна кількість кроків
-# # for i in tqdm(range(100), desc="Обробка файлів", ascii=False):
-# #     time.sleep(0.1) # Імітація роботи
-#
-#
-#
-# import time
-#
-# print("Запуск таймера...")
-#
-# for i in range(10, 0, -1):
-#     # \r повертає на початок. end="" забороняє новий рядок.
-#     # Пробіли в кінці потрібні, щоб затерти залишки довшого тексту
-#     print(f"\rЗалишилось часу: {i} секунд   ", end="")
-#     time.sleep(1)
-#
-# print("\rГотово!                   ")
+print()
+vis.print_window(vertical_sep= " ", horizontal_sep= " ")
