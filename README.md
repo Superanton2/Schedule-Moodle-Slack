@@ -3,6 +3,7 @@ Schedule + Moodle + Slack через термінал
 
 
 
+
 --- 
 Проєкт "S-M-S"
 Schedule + Moodle + Slack через термінал
