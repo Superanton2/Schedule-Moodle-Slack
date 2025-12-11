@@ -14,8 +14,8 @@ class Visual:
 
 
     def create_window(self, window_width: int, window_height: int, block_width: int, block_height: int) -> int:
-        self.window_width = window_width
-        self.window_height = window_height
+        self.window_width = window_width - 1
+        self.window_height = window_height - 1
         self.block_width = block_width
         self.block_height = block_height
 
@@ -26,9 +26,9 @@ class Visual:
         # Створюємо сітку [x][y]
         for x in range(window_width):
             colum = []
-            for y in range(window_height):
+            for y in range(window_height + 1):
 
-                new_block = ["0" * block_width for _ in range(block_height)]
+                new_block = [" " * block_width for _ in range(block_height)]
                 colum.append(new_block)
                 counter += 1
             self.window.append(colum)
@@ -36,7 +36,7 @@ class Visual:
         return counter
 
     def _check_write_to_coordinate(self, x_cord: int, y_cord: int, content) -> bool:
-
+        # загальна перевірка
         if self.window is None:
             print(f"{RED}First create window{RESET}")
             return False
@@ -49,35 +49,44 @@ class Visual:
             print(f"{RED}Y-coordinate is too large. Max possible value is {self.window_height}{RESET}")
             return False
 
+        # перевірка тексту
         if type(content) == str:
             if len(content) > (self.block_height * self.block_width):
                 print(f"{RED}Your content is too large. Max possible len is {self.block_height * self.block_width}{RESET}")
                 return False
 
         if type(content) == list:
+
+            if len(content) > self.block_height:
+                print(f"{RED}To mush lines. Max possible number of line is {self.block_height}{RESET}")
+                return False
+
+
             characters = 0
             for line in content:
+                if len(line) > self.block_width:
+                    print(f"{RED}Your content in line {content.index(line)} is too long."
+                          f"Max possible number of line is {self.block_width}{RESET}")
+                    return False
+
                 characters += len(line)
 
+
             if characters > (self.block_height * self.block_width):
-                print(f"{RED}Your content is too large. Max possible len is {self.block_height * self.block_width}{RESET}")
+                print(f"{RED}Your content is too long. Max possible len is {self.block_height * self.block_width}{RESET}")
                 return False
+
+
 
         return True
 
     def write_str_to_coordinate(self, x_cord: int, y_cord: int, content: str):
         # перевірка
-
         if not self._check_write_to_coordinate(x_cord, y_cord, content):
-            return None
+            return False
 
 
         # запис по кординатам
-        # block = self.window[x_cord][y_cord]
-        #
-        # print(block)
-
-
         content_words = content.split(" ")
         current_block_line = 0
         for index in range(len(content_words)):
@@ -114,9 +123,23 @@ class Visual:
 
         return True
 
+    def write_lst_to_coordinate(self, x_cord: int, y_cord: int, content: list[str]):
+
+        # перевірка
+        if not self._check_write_to_coordinate(x_cord, y_cord, content):
+            return None
+
+        # запис по кординатам
+        for index in range(len(content)):
+
+            sep = " " * (self.block_width - len(content[index]))
+
+            self.window[x_cord][y_cord][index - (self.block_height - 1)] = content[index] + sep
 
 
-    def print_window(self, sep: str):
+        return True
+
+    def print_window(self, vertical_sep= "", horizontal_sep= ""):
         # self.clear_window()
 
         for y in range(self.window_height):
@@ -124,27 +147,56 @@ class Visual:
 
             for line in range(self.block_height):
 
-                for x in range(self.window_width):
+                for x in range(self.window_width + 1):
 
-                    print(self.window[x][(self.window_height - 1) - y][(self.block_height - 1) - line], end=sep,)
+                    print(self.window[x][(self.window_height - 1) - y][(self.block_height - 1) - line], end= vertical_sep)
+
+                if (self.block_height - 1) - line == 0:
+                    print()
+                    # horizontal_line = (horizontal_sep * (self.block_width + 1)) * (self.window_width + 1)
+                    # print(horizontal_line, end= "")
+                    horizontal_line = ((horizontal_sep * self.block_width) + "·") * (self.window_width + 1)
+                    print(horizontal_line, end= "")
 
                 print()
             # [(self.block_height - 1) - line]
 
+        return self.window
+
+    def print_horizontal_lines(self):
         pass
 
-
-    def clear_window(self):
-        os.system('cls' if os.name == 'nt' else 'clear')
+    # def clear_window(self):
+    #     os.system('cls' if os.name == 'nt' else 'clear')
 
 
 vis = Visual()
-vis.create_window(3, 3, 6, 3)
+vis.create_window(3, 3, 10, 3)
 print()
-vis.write_str_to_coordinate(0, 0,   "to in")
-print()
-vis.print_window(" ")
+# vis.write_str_to_coordinate(0, 0,   "to in")
 
+# vis.write_lst_to_coordinate(1, 1, ["444irasntieans4", "Я"])
+# vis.write_lst_to_coordinate(1, 1, ["1", "Я тут", ""])
+
+print()
+
+vis.print_window(vertical_sep= "│", horizontal_sep= "─")
+print()
+
+vis.print_window(vertical_sep= "┃", horizontal_sep= "━")
+
+
+
+
+
+"""
+━
+┃
+┏┳┓
+┣╋┫
+
+┗┻┛
+"""
 
 
 #
