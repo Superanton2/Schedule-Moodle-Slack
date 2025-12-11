@@ -1,31 +1,52 @@
 {
-    "CS" : {
-        "101" : {
-          "name": "Computer Science Foundations",
-          "teacher": "Artem Korotenko",
-          "enrolled": []
-        },
-        "201" : {
-          "name": "Programming Basics",
-          "teacher": "Alla Kovalchuk",
-          "enrolled": []
-        }
-    },
-    "MATH" : {
-        "101" : {
-          "name": "Introduction to Mathematics",
-          "teacher": "Danyl Nutchenko",
-          "enrolled": []
-        },
-        "111" : {
-          "name": "Calculus",
-          "teacher": "Allah Akbar",
-          "enrolled": []
-        },
-        "115" : {
-          "name": "Discrete Mathematics",
-          "teacher": "Kulya Dmitro",
-          "enrolled": []
-        }
-    }
+  "CS101.1" : {
+    "name": "Computer Science Foundations (group 1)",
+    "teacher": "Artem Korotenko",
+    "enrolled": []
+  },
+  "CS201.1" : {
+    "name": "Programming Basics (group 1)",
+    "teacher": "Alla Kovalchuk",
+    "enrolled": []
+  },
+  "CS101.2" : {
+    "name": "Computer Science Foundations (group 2)",
+    "teacher": "Artem Korotenko 2.0",
+    "enrolled": []
+  },
+  "CS201.2" : {
+    "name": "Programming Basics (group 2)",
+    "teacher": "Alla Kovalchuk 2.0",
+    "enrolled": []
+  },
+  "MATH101.1" : {
+    "name": "Introduction to Mathematics (group 1)",
+    "teacher": "Danyl Nutchenko",
+    "enrolled": []
+  },
+  "MATH111.1" : {
+    "name": "Calculus (group 1)",
+    "teacher": "Allah Akbar",
+    "enrolled": []
+  },
+  "MATH115.1" : {
+    "name": "Discrete Mathematics (group 1)",
+    "teacher": "Kulya Dmitro",
+    "enrolled": []
+  },
+  "MATH101.2" : {
+    "name": "Introduction to Mathematics (group 2)",
+    "teacher": "Danyl Nutchenko 2.0",
+    "enrolled": []
+  },
+  "MATH111.2" : {
+    "name": "Calculus",
+    "teacher": "Allah Akbar 2.0 (group 2)",
+    "enrolled": []
+  },
+  "MATH115.2" : {
+    "name": "Discrete Mathematics (group 2)",
+    "teacher": "Kulya Dmitro 2.0",
+    "enrolled": []
+  }
 }
