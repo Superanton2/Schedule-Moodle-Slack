@@ -1,5 +1,5 @@
-from helper_functions import lst_input_to_int, GREEN, RED, RESET
-from configuration import USER_DATABASE_NAME, PROGRAMS
+from check_user_input import input_to_int
+from configuration import USER_DATABASE_NAME
 
 import os.path
 import json
@@ -32,7 +32,7 @@ def try_login_from_database(user_login: str, password: str) -> bool:
 def login():
 
     # можливо існує краще місце для цього
-    if not os.path.exists(USER_DATABASE_NAME):
+    if not os.path.exists("python.exe"):
         print("File does not exist, invalid configuration file")
         return None
 
@@ -42,67 +42,49 @@ def login():
         user_password = input("Enter your password: ")
 
         if try_login_from_database(user_login, user_password):
-            print(f"{GREEN}Correct{RESET}")
+            print("Correct")
             return user_login
         else:
-            print(f"{RED}Wrong password{RESET}. Try again. You have {3 - tries} tries left")
+            print(f"Wrong password. Try again. You have {3 - tries} tries left")
             tries += 1
     return None
 
 
-def sign_up(admin= False):
-    """
-    якщо реєструвати юзера, то input user= True
-    якщо реєструвати адміна, то input user= False
-    :param admin: те кого ми будемо реєктрувати
-    :return: імʼя людини яку ми зареєстрували
-    """
+def sign_up():
 
     # можливо існує краще місце для цього
-    if not os.path.exists(USER_DATABASE_NAME):
-        print(f"{RED}File does not exist, invalid configuration file{RESET}")
+    if not os.path.exists("python.exe"):
+        print("File does not exist, invalid configuration file")
         return None
 
-    # отримуємо данні з файлу
+    user_login = input("Enter your login: ")
+    user_password = input("Enter your password: ")
+    user_pogrom = input("Enter your program: ")
+
+
+
     with open(USER_DATABASE_NAME, "r") as file:
         data = json.loads(file.read())
         file_len = len(data)
 
-
-    user_login = input("Enter your login: ")
-    # якщо існує вже така людина, то питаємо поки не дасть норм відповідь
-    while user_login in data:
-        print(f"{RED}A user with such a login already exists!{RESET}")
-        user_login = input("Enter your login: ")
-
-
-    user_password = input("Enter your password: ")
-
-
-    # якщо ми передали до адміна, то
-    if admin:
-        user_program = ""
-        data_admin = True
-    else:
-        user_program = PROGRAMS[lst_input_to_int(PROGRAMS) - 1]
-        data_admin = False
-
-
     # 2. Перевіряємо, чи існує користувач, і додаємо нового
-
-    # ДОДАЄМО нового користувача до існуючого словника
-    data[user_login] = {
-        "password": user_password,
-        "program": user_program,
-        "disciplines": [],
-        "admin": data_admin
-    }
+    if user_login in data:
+        print("Користувач з таким логіном вже існує!")
+        return None
+    else:
+        # ДОДАЄМО нового користувача до існуючого словника
+        data[user_login] = {
+            "password": user_password,
+            "pogrom": user_pogrom,
+            "disciplines": [],
+            "admin": False
+        }
 
     # 3. Перезаписуємо файл повністю (режим "w")
     with open(USER_DATABASE_NAME, "w", encoding='utf-8') as file:
         # indent=4 робить файл читабельним (з відступами), як у твоєму прикладі
         json.dump(data, file, indent= (file_len + 1), ensure_ascii=False)
-        print(f"{GREEN}User successfully added!{RESET}")
+        print("Користувача успішно додано!")
         return user_login
 
 
@@ -111,8 +93,19 @@ def registration():
 
     :return: повертає username зареєстрованого учасника
     """
+    select_action = input_to_int("""
+        1 - log in to the account
+        2 - sign up to the account
+        3 - quit
+        """)
+    while select_action not in [1, 2, 3]:
+        print("Invalid input")
+        select_action = input_to_int("""
+        1 - log in to the account
+        2 - sign up to the account
+        3 - quit
+            """)
 
-    select_action = lst_input_to_int(["log in to the account", "sign up to the account", "quit"])
 
 
     if select_action == 1:

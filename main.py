@@ -1,6 +1,5 @@
 from login import registration
 
-
 def main():
     while True:
         print()
@@ -8,8 +7,6 @@ def main():
         user = registration()
         if user:
             print(user)
-
-
 
 
 if __name__ == "__main__":
