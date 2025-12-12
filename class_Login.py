@@ -96,7 +96,6 @@ class Login:
 
             # пробуємо залогінетись
             if self._try_login_from_database(user_login, user_password):
-                print("You entered")
                 return True
 
             # якщо не зайшли, то перевіряємо результати програми

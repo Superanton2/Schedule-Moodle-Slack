@@ -3,6 +3,7 @@ from class_Login import Login
 from class_Visual import Visual
 from class_Admin import Admin
 from class_User import User
+from class_WeekSchedule import WeekData
 
 class Run:
     def __init__(self, registration):
@@ -13,12 +14,26 @@ class Run:
         elif type(registration) == User:
             self.user = registration
         self.schedule = Visual()
+        self.week = WeekData("schedule.json", "subjects.json", "users.json")
+
+    def program(self):
+        if self.user:
+            self.run_user()
+        elif self.admin:
+            self.run_admin()
 
     def run_user(self):
         # малюємо розклад для юзера
         self.schedule.create_window(6, 6, 12,4)
+        self.schedule.input_week_lessons(self.week.schedule_for_user(self.user.disciplines))
+        self.schedule.print_window(" ", " ")
         # вибір для юзера
         inputs = ["1", "2", "3", "4"]
+        print(""""
+1 - status
+2 - enroll
+3 - leave discipline
+4 - quit""")
         while True:
             answer = input("What you want to do: ")
             while not answer in inputs:
@@ -73,8 +88,11 @@ class Run:
     def run_admin(self):
         # малюємо ВЕСЬ розклад
         self.schedule.create_window(6, 6, 12, 16)
+        self.schedule.print_window(" ", " ")
         # вибір для адміна
         inputs = ["1", "2"]
+        print("""1 - add pair
+        2 - remove pair""")
         while True:
             answer = input("What you want to do: ")
             while not answer in inputs:
@@ -89,3 +107,4 @@ class Run:
 l = Login()
 result = l.registration()
 r = Run(result)
+r.program()
