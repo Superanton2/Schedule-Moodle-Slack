@@ -171,12 +171,12 @@ class Login:
             return False
 
         if self.admin_status:
-            print("You entered your user account")
+            print("You entered your admin account")
             output = Admin(self.name)
         elif not self.admin_status:
-            print("You entered your admin account")
+            print("You entered your user account")
             output = User(self.name, self.program, self.disciplines)
-        else:
+        elif self.admin_status is None:
             print("You failed registration")
             output = False
 

@@ -102,4 +102,3 @@ class User:
                     dct["courses"].remove(discipline)
             discipline.enrolled.remove(self.name)
             print("Leaved successfully")
-
