@@ -181,11 +181,6 @@ class Visual:
 
         x_encoded_day = day_encoder[day]
 
-        spaces = " "* ((self.block_width - len(day)) // 2)
-        day_centered = f"{spaces}{day}{spaces}"
-
-        self.write_lst_to_coordinate(x_encoded_day, 4, ["", f"{day_centered.upper():}", "", ""])
-
         for pair in schedule_data:
             discipline_tag =  [x for x in schedule_data[pair].values()][0]
             if discipline_tag == "":
@@ -208,8 +203,15 @@ class Visual:
 
     def input_week_lessons(self, schedule_data: dict[str, dict] ):
         # {"Monday": {"Pair1": {"1.08.01": CS201"}}}
+
+        # запсужмо дні
         for day in ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]:
-            self.input_day_lessons(day, schedule_data[day])
+            x_encoded_day = day_encoder[day]
+
+            spaces = " " * ((self.block_width - len(day)) // 2)
+            day_centered = f"{spaces}{day}{spaces}"
+
+            self.write_lst_to_coordinate(x_encoded_day, 4, ["", f"{day_centered.upper():}", "", ""])
 
         for day in schedule_data:
             self.input_day_lessons(day, schedule_data[day])
