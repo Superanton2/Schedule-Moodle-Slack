@@ -208,8 +208,8 @@ class Visual:
 
     def input_week_lessons(self, schedule_data: dict[str, dict] ):
         # {"Monday": {"Pair1": {"1.08.01": CS201"}}}
-        for day in ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]:
-            self.input_day_lessons(day, schedule_data[day])
+        # for day in ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]:
+        #     self.input_day_lessons(day, schedule_data[day])
 
         for day in schedule_data:
             self.input_day_lessons(day, schedule_data[day])

@@ -9,7 +9,13 @@ class User:
         self.counter = 0
 
     def __str__(self):
+        self.__re_read__()
         return f"{self.name} is on {self.program} and enrolled to {self.disciplines}"
+
+    def __re_read__(self):
+        with open(USER_DATABASE_NAME, "r") as file:
+            data = json.load(file)
+            self.disciplines = data[self.name]["courses"]
 
     def __checker__(self, discipline):
         with open(SCHEDULE_DATABASE_NAME, "r") as file:
@@ -93,13 +99,14 @@ class User:
                     return False
 
     def leave(self, discipline):
-        if not self.name in discipline.enrolled:
+        if not discipline in self.disciplines:
             print("You are not enrolled to this discipline")
         else:
-            with open("USER_DATABASE_NAME", "a") as file:
-                for line in file.readlines():
-                    line = json.loads(line)
-                    dct = line[self.name]
-                    dct["courses"].remove(discipline)
-            discipline.enrolled.remove(self.name)
+            with open(USER_DATABASE_NAME, "r") as file:
+                dct = json.load(file)
+            user = dct[self.name]
+            user["courses"].remove(discipline)
+            dct[self.name].update(user)
+            with open(USER_DATABASE_NAME, "w") as file:
+                json.dump(dct, file, indent=2, ensure_ascii=False)
             print("Leaved successfully")
