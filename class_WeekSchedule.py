@@ -132,8 +132,21 @@ class WeekData:
             print("No such lesson")
             return False
 
+
+    def schedule_for_user(self, courses: list[str]):
+        courses_in_schedule = {}
+        for day in self.data:
+            for time in self.data[day]:
+                for room, lesson in self.data[day][time].items():
+                    for course in courses:
+                        if lesson == course:
+                            dict_course = {day: {time: {room: lesson}}}
+                            courses_in_schedule[day] = {time: {room: lesson}}
+        return courses_in_schedule
+
     def to_visualize(self):
         return self.data
+
 
 
 
