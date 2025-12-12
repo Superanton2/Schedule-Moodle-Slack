@@ -177,5 +177,7 @@ class Login:
         elif self.admin_status is None:
             print("You failed registration")
             output = False
+        else:
+            output = False
 
         return output
