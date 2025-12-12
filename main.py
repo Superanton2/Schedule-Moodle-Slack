@@ -86,3 +86,4 @@ class Run():
             if answer == "2":
                 self.admin.remove_pair(self.__admin_panel__("remove")[0], self.__admin_panel__("remove")[1], self.__admin_panel__("remove")[2])
 
+r = Run(User)
