@@ -1,9 +1,27 @@
 """
 here are configurations to our program
 """
+import os.path
+
 
 # path to database with information about users
 USER_DATABASE_NAME = "users.json"
+ADMIN_DATABASE_NAME = "admin.json"
+SCHEDULE_DATABASE_NAME = "schedule.json"
+SUBJECTS_DATABASE_NAME = "subjects.json"
+
+# перевіряємо чи існує файл
+if not os.path.exists(USER_DATABASE_NAME):
+    print("USER database file does not exist, invalid configuration file")
+if not os.path.exists(ADMIN_DATABASE_NAME):
+    print("ADMIN database file does not exist, invalid configuration file")
+if not os.path.exists(SCHEDULE_DATABASE_NAME):
+    print("SCHEDULE database file does not exist, invalid configuration file")
+if not os.path.exists(SUBJECTS_DATABASE_NAME):
+    print("SUBJECTS database file does not exist, invalid configuration file")
+
+
+
 
 LOGO = [
 "  /\ \   ",
