@@ -1,5 +1,5 @@
 import json
-from login import registration
+from class_Login import Login
 from class_Visual import Visual
 from class_Admin import Admin
 from class_User import User
