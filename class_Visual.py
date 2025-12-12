@@ -181,7 +181,10 @@ class Visual:
 
         x_encoded_day = day_encoder[day]
 
-        vis.write_lst_to_coordinate(x_encoded_day, 4, ["", f" {day.upper()}", "", ""])
+        spaces = " "* ((self.block_width - len(day)) // 2)
+        day_centered = f"{spaces}{day}{spaces}"
+
+        self.write_lst_to_coordinate(x_encoded_day, 4, ["", f"{day_centered.upper():}", "", ""])
 
         for pair in schedule_data:
             discipline_tag =  [x for x in schedule_data[pair].values()][0]
@@ -205,6 +208,8 @@ class Visual:
 
     def input_week_lessons(self, schedule_data: dict[str, dict] ):
         # {"Monday": {"Pair1": {"1.08.01": CS201"}}}
+        for day in ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]:
+            self.input_day_lessons(day, schedule_data[day])
 
         for day in schedule_data:
             self.input_day_lessons(day, schedule_data[day])
@@ -214,43 +219,43 @@ class Visual:
     #     os.system('cls' if os.name == 'nt' else 'clear')
 
 
-# vis = Visual()
-# vis.create_window(6, 6, 12, 4)
-#
-#
+vis = Visual()
+vis.create_window(6, 6, 12, 4)
+
+
 # from configuration import LOGO
-#
+
 # vis.write_lst_to_coordinate(0, 4, LOGO)
-# vis.write_lst_to_coordinate(0, 3, ["By Anton", "   Andrew", "   Katya"])
-#
-#
-#
-# data_mon = {"Pair1": {"1.08.01": "Math115"}}
-# vis.input_day_lessons("Monday", data_mon)
-#
-# data = {
-#   "Monday": {
-#     "Pair1": {"1.08.01": "Math115",},
-#     "Pair2": {"1.08.03": "Math111",},
-#     "Pair4": {"1.08.02": "Math101",}
-#   },
-#   "Tuesday": {
-#     "Pair3": {"1.08.01": "Math111",},
-#     "Pair4": {"1.08.01": "Math101",}
-#   }
-# }
-#
-# vis.input_week_lessons(data)
-#
-# # vis.add_line_to_coordinate((0, 0), (1, 0))
-# # vis.add_line_to_coordinate((1, 1), (2, 1))
-#
-# vis.print_window(vertical_sep= "│", horizontal_sep= "─")
-# print()
-# print()
-# print()
-# vis.print_window(vertical_sep= "┃", horizontal_sep= "━")
-# print()
-# print()
-# print()
-# vis.print_window(vertical_sep= " ", horizontal_sep= " ")
+vis.write_lst_to_coordinate(0, 3, ["By Anton", "   Andrew", "   Katya"])
+
+
+
+data_mon = {"Pair1": {"1.08.01": "Math115"}}
+vis.input_day_lessons("Monday", data_mon)
+
+data = {
+  "Monday": {
+    "Pair1": {"1.08.01": "Math115",},
+    "Pair2": {"1.08.03": "Math111",},
+    "Pair4": {"1.08.02": "Math101",}
+  },
+  "Tuesday": {
+    "Pair3": {"1.08.01": "Math111",},
+    "Pair4": {"1.08.01": "Math101",}
+  }
+}
+
+vis.input_week_lessons(data)
+
+# vis.add_line_to_coordinate((0, 0), (1, 0))
+# vis.add_line_to_coordinate((1, 1), (2, 1))
+
+vis.print_window(vertical_sep= "│", horizontal_sep= "─")
+print()
+print()
+print()
+vis.print_window(vertical_sep= "┃", horizontal_sep= "━")
+print()
+print()
+print()
+vis.print_window(vertical_sep= " ", horizontal_sep= " ")
