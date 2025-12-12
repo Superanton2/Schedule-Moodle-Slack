@@ -17,5 +17,3 @@ class Admin:
         if result:
             print(f"{self.name} removed {new_lesson_name} lesson in {new_lesson_day} at {new_lesson_time}")
 
-a = Admin("Andrii")
-a.remove_pair("Tuesday", "MATH115.1", "Pair1")
