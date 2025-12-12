@@ -1,260 +1,252 @@
 {
-    "Nella Toro": {
-        "password": "yxpYRvP5",
-        "program": "SE",
-        "courses": [
-            "CS201.1",
-            "MATH101.2"
-        ]
-    },
-    "Orina Kosenko": {
-        "password": "fnHNzdw8",
-        "program": "SE",
-        "courses": []
-    },
-    "Sundus L\u00f8vaas": {
-        "password": "GRs0gC46",
-        "program": "CS",
-        "courses": []
-    },
-    "Magn\u00f3lia Silveira": {
-        "password": "9wRLtzl8",
-        "program": "SE",
-        "courses": []
-    },
-    "Jake Evans": {
-        "password": "7lV3NeXQ",
-        "program": "CS",
-        "courses": []
-    },
-    "Aljo\u0161a Lap\u010devi\u0107": {
-        "password": "sbcJUT6D",
-        "program": "SE",
-        "courses": []
-    },
-    "Asher Morris": {
-        "password": "T02dH8m8",
-        "program": "SE",
-        "courses": []
-    },
-    "Brooklyn Smith": {
-        "password": "HzfgkHZj",
-        "program": "SE",
-        "courses": []
-    },
-    "\u0622\u0646\u06cc\u062a\u0627 \u0645\u0648\u0633\u0648\u06cc": {
-        "password": "zXiMyOtx",
-        "program": "SE",
-        "courses": []
-    },
-    "Brayden Hudson": {
-        "password": "baEPbzth",
-        "program": "CS",
-        "courses": []
-    },
-    "Nurdan Sepet\u00e7i": {
-        "password": "WfeI2Csa",
-        "program": "CS",
-        "courses": []
-    },
-    "Vernon Weaver": {
-        "password": "AFODglli",
-        "program": "AI",
-        "courses": []
-    },
-    "Fatih Dalk\u0131ran": {
-        "password": "lZRIZYag",
-        "program": "AI",
-        "courses": []
-    },
-    "Blagovist Zosenko": {
-        "password": "qYcmUu4P",
-        "program": "AI",
-        "courses": []
-    },
-    "Kim Terry": {
-        "password": "sQaMzsa1",
-        "program": "SE",
-        "courses": []
-    },
-    "Hirondino Jesus": {
-        "password": "b70yb5YJ",
-        "program": "SE",
-        "courses": []
-    },
-    "Kimberly Sims": {
-        "password": "aWKVPHdu",
-        "program": "SE",
-        "courses": []
-    },
-    "Graziella Perez": {
-        "password": "2AQHjdVK",
-        "program": "AI",
-        "courses": []
-    },
-    "Louisa Roy": {
-        "password": "UL9dT3Gk",
-        "program": "AI",
-        "courses": []
-    },
-    "Co\u015fkun Karabulut": {
-        "password": "E1kE0hjh",
-        "program": "AI",
-        "courses": []
-    },
-    "Hala Seljeseth": {
-        "password": "GmHqUFDO",
-        "program": "SE",
-        "courses": []
-    },
-    "Linnea Lakso": {
-        "password": "g8iWMMw7",
-        "program": "AI",
-        "courses": []
-    },
-    "Rhonda Harrison": {
-        "password": "odQiSjjX",
-        "program": "CS",
-        "courses": []
-    },
-    "Ishwar Kini": {
-        "password": "16pXWzfT",
-        "program": "SE",
-        "courses": []
-    },
-    "Laly Laurent": {
-        "password": "wjpsYdCk",
-        "program": "AI",
-        "courses": []
-    },
-    "Elin Gonzalez": {
-        "password": "KpdzhknN",
-        "program": "AI",
-        "courses": []
-    },
-    "Gilbert Laurent": {
-        "password": "smpDXxeB",
-        "program": "AI",
-        "courses": []
-    },
-    "Ruben Hanson": {
-        "password": "FgdabENG",
-        "program": "AI",
-        "courses": []
-    },
-    "In\u00e9s Hidalgo": {
-        "password": "0oixEnyH",
-        "program": "AI",
-        "courses": []
-    },
-    "Berta Leroy": {
-        "password": "m4wa92Vu",
-        "program": "AI",
-        "courses": []
-    },
-    "Sapna Saldanha": {
-        "password": "ULmwSZBS",
-        "program": "CS",
-        "courses": []
-    },
-    "Gilberto Villa": {
-        "password": "w58bpxFv",
-        "program": "AI",
-        "courses": []
-    },
-    "Antonio Moldestad": {
-        "password": "MDYc0xTm",
-        "program": "AI",
-        "courses": []
-    },
-    "Aditya Chiplunkar": {
-        "password": "6Tsm9RyZ",
-        "program": "AI",
-        "courses": []
-    },
-    "Mariko Porto": {
-        "password": "U5hTSx1T",
-        "program": "AI",
-        "courses": []
-    },
-    "Rayaan Vernekar": {
-        "password": "a7MXc2dP",
-        "program": "SE",
-        "courses": []
-    },
-    "Jermain Backx": {
-        "password": "vNbnfqIa",
-        "program": "SE",
-        "courses": []
-    },
-    "Fernando Distler": {
-        "password": "2fcSyciB",
-        "program": "CS",
-        "courses": []
-    },
-    "Carl Jensen": {
-        "password": "SYUqDNj1",
-        "program": "AI",
-        "courses": []
-    },
-    "Socorro Campos": {
-        "password": "1Wo2hH3M",
-        "program": "SE",
-        "courses": []
-    },
-    "\u0110or\u0111e Baki\u0107": {
-        "password": "ZJJx6bpo",
-        "program": "AI",
-        "courses": []
-    },
-    "Denis Kalinovich": {
-        "password": "bHVVZ4Jx",
-        "program": "AI",
-        "courses": []
-    },
-    "Tim Matthews": {
-        "password": "kRY8KYBd",
-        "program": "AI",
-        "courses": []
-    },
-    "Dalibor Tadi\u0107": {
-        "password": "jJDeshhI",
-        "program": "AI",
-        "courses": []
-    },
-    "Marie Christiansen": {
-        "password": "OmJ7y5Ra",
-        "program": "AI",
-        "courses": []
-    },
-    "Radoslav Sto\u0161i\u0107": {
-        "password": "RjkyPpAK",
-        "program": "CS",
-        "courses": []
-    },
-    "Emilie David": {
-        "password": "3I4WYA1N",
-        "program": "CS",
-        "courses": []
-    },
-    "Macit \u00d6zberk": {
-        "password": "ztgFrMKU",
-        "program": "SE",
-        "courses": []
-    },
-    "Esat \u00d6zdo\u011fan": {
-        "password": "fjeGbB7Z",
-        "program": "SE",
-        "courses": []
-    },
-    "Detlef Verschuuren": {
-        "password": "ZTsQFY22",
-        "program": "AI",
-        "courses": []
-    },
-    "Anton": {
-        "password": "12",
-        "pogrom": "Ai",
-        "disciplines": []
-    }
+  "Ken May": {
+    "password": "Xla8Ytdk",
+    "program": "CS",
+    "courses": []
+  },
+  "Azuma Aguirre": {
+    "password": "XOEwuSNp",
+    "program": "SE",
+    "courses": []
+  },
+  "Nelli Kujala": {
+    "password": "FNtA51Zj",
+    "program": "SE",
+    "courses": []
+  },
+  "Storm Poulsen": {
+    "password": "DQixYpu7",
+    "program": "CS",
+    "courses": []
+  },
+  "Brandon Reid": {
+    "password": "ZObwjWW8",
+    "program": "SE",
+    "courses": []
+  },
+  "Maëlyne Gauthier": {
+    "password": "kAdeuEmV",
+    "program": "SE",
+    "courses": []
+  },
+  "محیا رضاییان": {
+    "password": "CRJyxN3w",
+    "program": "AI",
+    "courses": []
+  },
+  "Emin Häusler": {
+    "password": "pCw1kU9w",
+    "program": "SE",
+    "courses": []
+  },
+  "Adam Andersen": {
+    "password": "t6dJr93j",
+    "program": "SE",
+    "courses": []
+  },
+  "Lillie Stanley": {
+    "password": "8IpHWNEo",
+    "program": "SE",
+    "courses": []
+  },
+  "Logan Abraham": {
+    "password": "Hj4rhX1a",
+    "program": "CS",
+    "courses": []
+  },
+  "Diana Matthews": {
+    "password": "XXb4HjUS",
+    "program": "SE",
+    "courses": []
+  },
+  "David Mccoy": {
+    "password": "lzzGYJVq",
+    "program": "AI",
+    "courses": []
+  },
+  "Liana Malmo": {
+    "password": "SOoDgtwK",
+    "program": "CS",
+    "courses": []
+  },
+  "Jerome Barrett": {
+    "password": "Mh4kZIEp",
+    "program": "CS",
+    "courses": []
+  },
+  "Dino Lemoine": {
+    "password": "MIGtAhQB",
+    "program": "AI",
+    "courses": []
+  },
+  "Douglas Garrett": {
+    "password": "Vhd0XvyR",
+    "program": "CS",
+    "courses": []
+  },
+  "Karan Saniel": {
+    "password": "DxgvJSX2",
+    "program": "CS",
+    "courses": []
+  },
+  "Alberte Mortensen": {
+    "password": "4NYOsBj4",
+    "program": "SE",
+    "courses": []
+  },
+  "Inge Robin": {
+    "password": "yHfEcSFl",
+    "program": "CS",
+    "courses": []
+  },
+  "Nedeljko Obradović": {
+    "password": "R5mo5lxA",
+    "program": "AI",
+    "courses": []
+  },
+  "Parth Sheikh": {
+    "password": "BcWBR4ZP",
+    "program": "CS",
+    "courses": []
+  },
+  "Silje Mortensen": {
+    "password": "OimwNHQY",
+    "program": "AI",
+    "courses": []
+  },
+  "Heinrich Bourgeois": {
+    "password": "GODVSUw3",
+    "program": "CS",
+    "courses": []
+  },
+  "Nilton Cardoso": {
+    "password": "1QDFL1cS",
+    "program": "CS",
+    "courses": []
+  },
+  "Bastien Duval": {
+    "password": "Dv4POWT9",
+    "program": "SE",
+    "courses": []
+  },
+  "Todd Fuller": {
+    "password": "hvIR1r4C",
+    "program": "AI",
+    "courses": []
+  },
+  "Joel Rinne": {
+    "password": "5UxVdbII",
+    "program": "CS",
+    "courses": []
+  },
+  "Aila Dokken": {
+    "password": "gY3MRG6v",
+    "program": "AI",
+    "courses": []
+  },
+  "Yar Zhiteckiy": {
+    "password": "1x5uL6uu",
+    "program": "AI",
+    "courses": []
+  },
+  "Kylian Guillaume": {
+    "password": "NQaoLGnb",
+    "program": "AI",
+    "courses": []
+  },
+  "Melvin Richards": {
+    "password": "aZ80Ax5r",
+    "program": "CS",
+    "courses": []
+  },
+  "Vlatka Živković": {
+    "password": "d31yVfdB",
+    "program": "SE",
+    "courses": []
+  },
+  "Samantha Castillo": {
+    "password": "UvD7CY11",
+    "program": "SE",
+    "courses": []
+  },
+  "Swen Decker": {
+    "password": "OwAMLYo6",
+    "program": "SE",
+    "courses": []
+  },
+  "Elif Korol": {
+    "password": "YorTJwYO",
+    "program": "CS",
+    "courses": []
+  },
+  "Bodil Emmens": {
+    "password": "cBULaGFv",
+    "program": "CS",
+    "courses": []
+  },
+  "کوروش سالاری": {
+    "password": "0J7NQEib",
+    "program": "CS",
+    "courses": []
+  },
+  "Ruža Novaković": {
+    "password": "9TbjPvQ1",
+    "program": "CS",
+    "courses": []
+  },
+  "Sebastian Clarke": {
+    "password": "1fxtHlQf",
+    "program": "SE",
+    "courses": []
+  },
+  "Alcindo Silveira": {
+    "password": "G244gjXO",
+    "program": "AI",
+    "courses": []
+  },
+  "Cecil Fleming": {
+    "password": "KEdPk8OC",
+    "program": "SE",
+    "courses": []
+  },
+  "Luisa Meyer": {
+    "password": "nBfZqjtb",
+    "program": "CS",
+    "courses": []
+  },
+  "Enrique Holt": {
+    "password": "5CWM0QDL",
+    "program": "SE",
+    "courses": []
+  },
+  "Macit Nalbantoğlu": {
+    "password": "luUc6euA",
+    "program": "AI",
+    "courses": []
+  },
+  "Carl Kristensen": {
+    "password": "RbSQukxS",
+    "program": "SE",
+    "courses": []
+  },
+  "سام زارعی": {
+    "password": "QnmDnZuM",
+    "program": "AI",
+    "courses": []
+  },
+  "Jan Nießen": {
+    "password": "WNMYf3M9",
+    "program": "CS",
+    "courses": []
+  },
+  "Regina Richardson": {
+    "password": "dhuDdw7V",
+    "program": "CS",
+    "courses": []
+  },
+  "Hugh Hopkins": {
+    "password": "p4MMeAfA",
+    "program": "CS",
+    "courses": []
+  }
 }
