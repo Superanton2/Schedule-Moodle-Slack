@@ -2,7 +2,6 @@ import json
 import random
 
 class WeekData:
-    ALL_CLASSROOMS = ["1.08.01", "1.08.02", "1.08.03", "1.08.04"]
 
     def __init__(self, schedule_file, subjects_file, users_file):
         self.users_file = users_file
@@ -121,4 +120,5 @@ class WeekData:
 
     def to_visualize(self):
         return self.data
+
 
