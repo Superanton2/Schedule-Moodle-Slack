@@ -26,10 +26,13 @@ def get_password():
     passwords = data["pws"]
     return passwords
 
-passwords = get_password()
-names = get_names()
-users_data = {name: {"password": password, "program": random.choice(programs), "courses": []} for name, password in zip(names, passwords)}
+def generate_users_database():
+    passwords = get_password()
+    names = get_names()
+    users_data = {name: {"password": password, "program": random.choice(programs), "courses": []} for name, password in zip(names, passwords)}
 
-with open("users.json", "w", encoding='utf-8') as file:
-    file.write(json.dumps(users_data, indent=4, ensure_ascii=False))
+    with open("users.json", "w", encoding='utf-8') as file:
+        file.write(json.dumps(users_data, indent=4, ensure_ascii=False))
     print("Database created")
+
+generate_users_database()

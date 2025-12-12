@@ -92,29 +92,32 @@ class WeekData:
         free, occupied = self.get_free_classrooms(new_lesson_day, new_lesson_time)
         if new_lesson_name not in self.subjects:
             print("The lessons name was not declared")
+            return False
         elif new_lesson_name in self.data[new_lesson_day][new_lesson_time].values():
             print("Such lesson is already on this time")
+            return False
         elif self.has_conflict(new_lesson_day, new_lesson_name, new_lesson_time):
             print("Sorry, the conflict is detected. Students already have another course at this time.")
+            return False
         elif not free:
             print("Sorry, no free classrooms")
+            return False
         else:
             self.data[new_lesson_day][new_lesson_time][free[0]] = new_lesson_name
-            print(f"Lesson {new_lesson_name} added to {free[0]} on {new_lesson_day} / {new_lesson_time}")
+            self.upload_data()
+            return True
 
-        self.upload_data()
 
     def remove_lesson(self, day_of_lesson_to_remove, name_of_lesson_to_remove, time_of_lesson_to_remove):
         classrooms = self.data[day_of_lesson_to_remove][time_of_lesson_to_remove]
         for room, subject in classrooms.items():
             if subject == name_of_lesson_to_remove:
                 classrooms[room] = ""
-                break
+                self.upload_data()
+                return True
         else:
             print("No such lesson")
-
-        self.upload_data()
-
+            return False
 
     def to_visualize(self):
         return self.data
