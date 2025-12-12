@@ -1,3 +1,4 @@
+from configuration import USER_DATABASE_NAME, SCHEDULE_DATABASE_NAME
 import json
 
 class User:
@@ -11,7 +12,7 @@ class User:
         return f"{self.name} is on {self.program} and enrolled to {self.disciplines}"
 
     def __checker__(self, discipline):
-        with open("schedule.json", "r") as file:
+        with open(SCHEDULE_DATABASE_NAME, "r") as file:
                 schedule = json.load(file)
 
                 for day in schedule:
@@ -39,10 +40,10 @@ class User:
         if counter == 1:
             print(f"No way you can visit {discipline}")
         elif counter == 2:
-            with open("users.json", "r") as file:
+            with open(USER_DATABASE_NAME, "r") as file:
                 data = json.load(file)
             data[self.name]["courses"].append(discipline)
-            with open("users.json", "w") as file:
+            with open(USER_DATABASE_NAME, "w") as file:
                 json.dump(data, file, indent=2)
             print(f"You was successfully enrolled to {discipline}")
             return True
@@ -95,7 +96,7 @@ class User:
         if not self.name in discipline.enrolled:
             print("You are not enrolled to this discipline")
         else:
-            with open("users.json", "a") as file:
+            with open("USER_DATABASE_NAME", "a") as file:
                 for line in file.readlines():
                     line = json.loads(line)
                     dct = line[self.name]
