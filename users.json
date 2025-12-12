@@ -2,7 +2,10 @@
   "Ken May": {
     "password": "Xla8Ytdk",
     "program": "CS",
-    "courses": []
+    "courses": [
+      "MATH101.1",
+      "CS201.2"
+    ]
   },
   "Azuma Aguirre": {
     "password": "XOEwuSNp",
@@ -24,17 +27,17 @@
     "program": "SE",
     "courses": []
   },
-  "Maëlyne Gauthier": {
+  "Ma\u0420\u201c\u0412\u00ablyne Gauthier": {
     "password": "kAdeuEmV",
     "program": "SE",
     "courses": []
   },
-  "محیا رضاییان": {
+  "\u0420\u00a9\u0432\u0402\u00a6\u0420\u0401\u0412\u00ad\u0420\u00ab\u0420\u0409\u0420\u0401\u0412\u00a7 \u0420\u0401\u0412\u00b1\u0420\u0401\u0412\u00b6\u0420\u0401\u0412\u00a7\u0420\u00ab\u0420\u0409\u0420\u00ab\u0420\u0409\u0420\u0401\u0412\u00a7\u0420\u00a9\u0432\u0402\u00a0": {
     "password": "CRJyxN3w",
     "program": "AI",
     "courses": []
   },
-  "Emin Häusler": {
+  "Emin H\u0420\u201c\u0412\u00a4usler": {
     "password": "pCw1kU9w",
     "program": "SE",
     "courses": []
@@ -99,7 +102,7 @@
     "program": "CS",
     "courses": []
   },
-  "Nedeljko Obradović": {
+  "Nedeljko Obradovi\u0420\u201d\u0432\u0402\u040e": {
     "password": "R5mo5lxA",
     "program": "AI",
     "courses": []
@@ -159,7 +162,7 @@
     "program": "CS",
     "courses": []
   },
-  "Vlatka Živković": {
+  "Vlatka \u0420\u2022\u0420\u2026ivkovi\u0420\u201d\u0432\u0402\u040e": {
     "password": "d31yVfdB",
     "program": "SE",
     "courses": []
@@ -184,12 +187,12 @@
     "program": "CS",
     "courses": []
   },
-  "کوروش سالاری": {
+  "\u0420\u0404\u0412\u00a9\u0420\u00a9\u0432\u201a\u00ac\u0420\u0401\u0412\u00b1\u0420\u00a9\u0432\u201a\u00ac\u0420\u0401\u0422\u2018 \u0420\u0401\u0421\u2013\u0420\u0401\u0412\u00a7\u0420\u00a9\u0432\u0402\u045b\u0420\u0401\u0412\u00a7\u0420\u0401\u0412\u00b1\u0420\u00ab\u0420\u0409": {
     "password": "0J7NQEib",
     "program": "CS",
     "courses": []
   },
-  "Ruža Novaković": {
+  "Ru\u0420\u2022\u0421\u2022a Novakovi\u0420\u201d\u0432\u0402\u040e": {
     "password": "9TbjPvQ1",
     "program": "CS",
     "courses": []
@@ -219,7 +222,7 @@
     "program": "SE",
     "courses": []
   },
-  "Macit Nalbantoğlu": {
+  "Macit Nalbanto\u0420\u201d\u0421\u045flu": {
     "password": "luUc6euA",
     "program": "AI",
     "courses": []
@@ -229,12 +232,12 @@
     "program": "SE",
     "courses": []
   },
-  "سام زارعی": {
+  "\u0420\u0401\u0421\u2013\u0420\u0401\u0412\u00a7\u0420\u00a9\u0432\u0402\u00a6 \u0420\u0401\u0420\u2020\u0420\u0401\u0412\u00a7\u0420\u0401\u0412\u00b1\u0420\u0401\u0432\u201e\u2013\u0420\u00ab\u0420\u0409": {
     "password": "QnmDnZuM",
     "program": "AI",
     "courses": []
   },
-  "Jan Nießen": {
+  "Jan Nie\u0420\u201c\u0421\u045fen": {
     "password": "WNMYf3M9",
     "program": "CS",
     "courses": []
