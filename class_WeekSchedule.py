@@ -37,7 +37,7 @@ class WeekData:
                 self.data[slot[0]][slot[1]][slot[2]] = subject
         self.upload_data()
 
-        def check_schedule(self):
+    def check_schedule(self):
         for day in self.data:
             for time in self.data[day]:
                 for room_in_schedule, lesson_in_schedule in self.data[day][time].items():
@@ -140,12 +140,12 @@ class WeekData:
                 for room, lesson in self.data[day][time].items():
                     for course in courses:
                         if lesson == course:
-                            # dict_course = {day: {time: {{room: lesson, room1: lesson1}}}}
                             if not day in courses_in_schedule:
                                 courses_in_schedule.setdefault(day, {time: {room: lesson}})
                             else:
                                 courses_in_schedule[day].update({time: {room: lesson}})
         return courses_in_schedule
+
 
 
 
