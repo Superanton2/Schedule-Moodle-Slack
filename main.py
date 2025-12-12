@@ -1,5 +1,6 @@
 import json
 from login import registration
+from class_Visual import Visual
 from class_Admin import Admin
 from class_User import User
 
@@ -11,10 +12,11 @@ class Run():
             self.admin = registration
         elif type(registration) == User:
             self.user = registration
+        self.schedule = Visual()
 
     def run_user(self):
         # малюємо розклад для юзера
-
+        self.schedule.create_window(6, 6, 12,4)
         # вибір для юзера
         inputs = ["1", "2", "3", "4"]
         while True:
@@ -70,7 +72,7 @@ class Run():
 
     def run_admin(self):
         # малюємо ВЕСЬ розклад
-
+        self.schedule.create_window(6, 6, 12, 16)
         # вибір для адміна
         inputs = ["1", "2"]
         while True:
