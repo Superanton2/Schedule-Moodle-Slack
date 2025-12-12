@@ -219,7 +219,7 @@ class Visual:
 
 vis = Visual()
 vis.create_window(6, 6, 12, 4)
-print()
+
 
 
 from configuration import LOGO
@@ -227,8 +227,6 @@ from configuration import LOGO
 vis.write_lst_to_coordinate(0, 4, LOGO)
 vis.write_lst_to_coordinate(0, 3, ["By Anton", "   Andrew", "   Katya"])
 
-
-# vis.write_lst_to_coordinate(1, 1, [f" Math115", " 1.08.2", " Куля Д.", "1"])
 
 
 data = {"Pair1": {"1.08.01": "Math115"}}
