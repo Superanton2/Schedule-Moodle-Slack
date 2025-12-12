@@ -4,7 +4,7 @@ from class_Visual import Visual
 from class_Admin import Admin
 from class_User import User
 
-class Run():
+class Run:
     def __init__(self, registration):
         self.admin = None
         self.user = None
@@ -86,4 +86,6 @@ class Run():
             if answer == "2":
                 self.admin.remove_pair(self.__admin_panel__("remove")[0], self.__admin_panel__("remove")[1], self.__admin_panel__("remove")[2])
 
-r = Run(User)
+l = Login()
+result = l.registration()
+r = Run(result)

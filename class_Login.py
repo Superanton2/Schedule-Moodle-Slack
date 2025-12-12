@@ -1,5 +1,3 @@
-from jinja2 import select_autoescape
-
 from helper_functions import lst_input_to_int
 from configuration import USER_DATABASE_NAME, ADMIN_DATABASE_NAME
 from class_User import User
