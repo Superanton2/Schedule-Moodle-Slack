@@ -37,6 +37,20 @@ class WeekData:
                 self.data[slot[0]][slot[1]][slot[2]] = subject
         self.upload_data()
 
+        def check_schedule(self):
+        for day in self.data:
+            for time in self.data[day]:
+                for room_in_schedule, lesson_in_schedule in self.data[day][time].items():
+                    if lesson_in_schedule != "":
+                        if self.has_conflict(day, lesson_in_schedule, time):
+                            self.data[day][time][room_in_schedule] = ""
+                            slot = self.get_a_slot()
+                            while self.data[slot[0]][slot[1]][slot[2]] != "":
+                                slot = self.get_a_slot()
+                            self.data[slot[0]][slot[1]][slot[2]] = lesson_in_schedule
+        self.upload_data()
+        print("Checked")
+
 
     def empty_schedule(self):
         for day in self.data:
@@ -83,7 +97,7 @@ class WeekData:
         for student_courses in self.users_courses:
             if new_lesson_name in student_courses:
                 for room, lesson in self.data[new_lesson_day][new_lesson_time].items():
-                    if lesson in student_courses:
+                    if lesson in student_courses and lesson != new_lesson_name:
                         return True
         return False
 
@@ -120,5 +134,6 @@ class WeekData:
 
     def to_visualize(self):
         return self.data
+
 
 
