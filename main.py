@@ -83,7 +83,7 @@ class Run:
         while not new_lesson_time.lower() in pairs:
             new_lesson_time = input("No such time slot. Enter time: ")
 
-        return new_lesson_day, new_lesson_name, new_lesson_time
+        return new_lesson_day.capitalize(), new_lesson_name.upper(), new_lesson_time.capitalize()
 
     def run_admin(self):
         # малюємо ВЕСЬ розклад
@@ -99,10 +99,12 @@ class Run:
                 answer = input("Invalid answer. What you want to do: ")
 
             if answer == "1":
-                self.admin.add_pair(self.__admin_panel__("add")[0], self.__admin_panel__("add")[1], self.__admin_panel__("add")[2])
+                lst = self.__admin_panel__("add")
+                self.admin.add_pair(lst[0], lst[1], lst[2])
 
             if answer == "2":
-                self.admin.remove_pair(self.__admin_panel__("remove")[0], self.__admin_panel__("remove")[1], self.__admin_panel__("remove")[2])
+                lst = self.__admin_panel__("remove")
+                self.admin.remove_pair(lst[0], lst[1], lst[2])
 
 l = Login()
 result = l.registration()
