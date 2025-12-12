@@ -1,3 +1,4 @@
+from configuration import USER_DATABASE_NAME
 import json
 import requests
 import random
@@ -31,7 +32,7 @@ def generate_users_database():
     names = get_names()
     users_data = {name: {"password": password, "program": random.choice(programs), "courses": []} for name, password in zip(names, passwords)}
 
-    with open("users.json", "w", encoding='utf-8') as file:
+    with open(USER_DATABASE_NAME, "w", encoding='utf-8') as file:
         file.write(json.dumps(users_data, indent=4, ensure_ascii=False))
     print("Database created")
 

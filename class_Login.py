@@ -36,6 +36,7 @@ class Login:
                 self.name = user_login
                 self.password = password
                 self.program = data.get(user_login)["program"]
+                self.disciplines = data.get(user_login)["courses"]
                 self.admin_status = False
                 return True
 
@@ -85,6 +86,7 @@ class Login:
         self.name = ""
         self.password = ""
         self.program = ""
+        self.disciplines = []
         self.admin_status = None
 
     def login(self) -> bool:
@@ -140,7 +142,7 @@ class Login:
         data[user_login] = {
             "password": user_password,
             "pogrom": user_pogrom,
-            "disciplines": [],
+            "courses": [],
         }
 
         self.name = user_login
@@ -175,6 +177,8 @@ class Login:
             output = User(self.name, self.program, self.disciplines)
         elif self.admin_status is None:
             print("You failed registration")
+            output = False
+        else:
             output = False
 
         return output
