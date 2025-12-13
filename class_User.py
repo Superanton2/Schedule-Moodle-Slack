@@ -21,6 +21,10 @@ class User:
         return f"{self.name} is on {self.program} and enrolled to {disciplines_str}"
 
     def __re_read__(self):
+        """
+        перзаписує дання з бази данних юзера
+        """
+
         with open(USER_DATABASE_NAME, "r") as file:
             data = json.load(file)
             self.disciplines = data[self.name]["courses"]
@@ -58,8 +62,7 @@ class User:
                 for mine in self.disciplines:
                     if mine in pair.values():
                         break
-
-                if pair[room] == discipline and not pair[room] in self.disciplines:
+                if pair_data[room] == discipline and not pair_data[room] in self.disciplines:
                     self.counter += 1
                     continue
 
@@ -89,6 +92,11 @@ class User:
         return False
 
     def __help_enroll_2group__(self, discipline_to_enroll: str):
+        """
+        якщо для групи не вийде, то пропонує іншу групу
+        :param discipline_to_enroll:
+        :return:
+        """
         discipline_to_enroll = list(discipline_to_enroll)
 
         # міняємо 1 групу на 2
@@ -133,6 +141,7 @@ class User:
         if not discipline in self.disciplines:
             print("You are not enrolled to this discipline")
             return False
+
         else:
             with open(USER_DATABASE_NAME, "r") as file:
                 user_data = json.load(file)
