@@ -17,7 +17,7 @@ class Run:
             self.admin = registration
         elif type(registration) == User:
             self.user = registration
-        self.schedule = Visual()
+        self.visual = Visual()
         self.week = WeekData(SCHEDULE_DATABASE_NAME, SUBJECTS_DATABASE_NAME, USER_DATABASE_NAME)
 
     def program(self):
@@ -28,11 +28,8 @@ class Run:
 
     def run_user(self):
         # малюємо розклад для юзера
-        self.schedule.create_window(6, 6, 12,4)
-        self.schedule.input_week_lessons(self.week.schedule_for_user(self.user.disciplines))
-        self.schedule.print_window(" ", " ")
-
         while True:
+            self.create_schedule_window(admin= False)
             # вибір для юзера
             answer = lst_input_to_int(["status", "enroll", "leave discipline", "quit"])
 
@@ -87,9 +84,7 @@ class Run:
         return new_lesson_day.capitalize(), new_lesson_name.upper(), new_lesson_time.capitalize()
 
     def run_admin(self):
-        # малюємо ВЕСЬ розклад
-        self.schedule.create_window(6, 6, 12, 16)
-        self.schedule.print_window(" ", " ")
+        self.create_schedule_window(admin= True)
 
         while True:
             # вибір для адміна
@@ -106,11 +101,21 @@ class Run:
             elif answer == 3:
                 quit()
 
-    def create_schedule_window(self):
+    def create_schedule_window(self, admin= False):
         # малюємо розклад для юзера
-        self.schedule.create_window(6, 6, 12,4)
-        self.schedule.input_week_lessons(self.week.schedule_for_user(self.user.disciplines))
-        self.schedule.print_window(" ", " ")
+        if not admin:
+            self.visual.create_window(6, 6, 12, 4)
+            self.visual.input_week_lessons(self.week.schedule_for_user(self.user.disciplines))
+            self.visual.write_lst_to_coordinate(0, 4, ["SCHEDULE by", "Anton", "Andrew", "Kateryna"])
+            self.visual.write_lst_to_coordinate(0, 4, ["SCHEDULE by", "Anton", "Andrew", "Kateryna"])
+
+
+            print("\n")
+            self.visual.print_window(" ", " ")
+        else:
+            self.visual.create_window(6, 6, 12, 16)
+            print("\n")
+            self.visual.print_window(" ", " ")
 
 
 def main():

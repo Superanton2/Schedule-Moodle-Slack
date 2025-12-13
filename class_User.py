@@ -76,7 +76,7 @@ class User:
             data[self.name]["courses"].append(discipline)
 
             with open(USER_DATABASE_NAME, "w") as file:
-                json.dump(data, file, indent=2)
+                json.dump(data, file, indent=2, ensure_ascii=False)
 
             self.disciplines.append(discipline)
 
@@ -97,7 +97,7 @@ class User:
         # міняємо 2 групу на 1
         elif discipline_to_enroll[-1] == "2":
             discipline_to_enroll[-1] = "1"
-        
+
         dis = "".join(discipline_to_enroll)
 
         # перевіряємо для другої групи
@@ -105,9 +105,9 @@ class User:
 
         if not self.__help_enroll__(dis):
             print(f"You was not enrolled on {dis}")
-            
-        
-        
+
+
+
 
     def enroll(self, discipline):
         if discipline in self.disciplines:
