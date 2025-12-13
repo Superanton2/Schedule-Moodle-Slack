@@ -25,7 +25,7 @@ class User:
         перзаписує дання з бази данних юзера
         """
 
-        with open(USER_DATABASE_NAME, "r") as file:
+        with open(USER_DATABASE_NAME, "r", encoding="utf-8") as file:
             data = json.load(file)
             self.disciplines = data[self.name]["courses"]
 
@@ -36,7 +36,7 @@ class User:
 
         :param discipline: програма яку ми перевіряємо
         """
-        with open(SCHEDULE_DATABASE_NAME, "r") as file:
+        with open(SCHEDULE_DATABASE_NAME, "r", encoding="utf-8") as file:
             schedule = json.load(file)
         # закриваємо файл, щоб віддати ресурси
         self.counter = 0
@@ -80,11 +80,11 @@ class User:
             print(f"No way you can visit {discipline}")
 
         elif self.counter == 2:
-            with open(USER_DATABASE_NAME, "r") as file:
+            with open(USER_DATABASE_NAME, "r", encoding="utf-8") as file:
                 data = json.load(file)
             data[self.name]["courses"].append(discipline)
 
-            with open(USER_DATABASE_NAME, "w") as file:
+            with open(USER_DATABASE_NAME, "w", encoding="utf-8") as file:
                 json.dump(data, file, indent=2, ensure_ascii=False)
 
             self.disciplines.append(discipline)
@@ -149,14 +149,14 @@ class User:
             return False
 
         else:
-            with open(USER_DATABASE_NAME, "r") as file:
+            with open(USER_DATABASE_NAME, "r", encoding="utf-8" ) as file:
                 user_data = json.load(file)
 
             user = user_data[self.name]
             user["courses"].remove(discipline)
             user_data[self.name].update(user)
 
-            with open(USER_DATABASE_NAME, "w") as file:
+            with open(USER_DATABASE_NAME, "w", encoding="utf-8") as file:
                 json.dump(user_data, file, indent=2, ensure_ascii=False)
 
             self.disciplines.remove(discipline)
