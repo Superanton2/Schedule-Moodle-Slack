@@ -136,18 +136,18 @@ class Login:
             user_login = input("Enter your login: ")
 
         user_password = input("Enter your password: ")
-        user_pogrom = input("Enter your program: ")
+        user_program = input("Enter your program: ")
 
 
         data[user_login] = {
             "password": user_password,
-            "pogrom": user_pogrom,
+            "program": user_program,
             "courses": [],
         }
 
         self.name = user_login
         self.password = user_password
-        self.program = user_pogrom
+        self.program = user_program
 
         with open(USER_DATABASE_NAME, "w", encoding='utf-8') as file:
             json.dump(data, file, indent= 4, ensure_ascii=False)

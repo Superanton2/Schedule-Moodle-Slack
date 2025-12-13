@@ -1,4 +1,4 @@
-from configuration import USER_DATABASE_NAME, SCHEDULE_DATABASE_NAME
+from configuration import USER_DATABASE_NAME, SCHEDULE_DATABASE_NAME, SUBJECTS_DATABASE_NAME
 from helper_functions import lst_input_to_int
 
 import json
@@ -12,7 +12,7 @@ class User:
         self.disciplines = disciplines
         self.counter = 0
         self.schedule = Visual()
-        self.week = WeekData("schedule.json", "subjects.json", "users.json")
+        self.week = WeekData(SCHEDULE_DATABASE_NAME, SUBJECTS_DATABASE_NAME, USER_DATABASE_NAME)
 
     def __str__(self):
         self.__re_read__()
@@ -23,13 +23,16 @@ class User:
             data = json.load(file)
             self.disciplines = data[self.name]["courses"]
 
-    def __checker__(self, discipline: str):
+    def __checker__(self, discipline: str) -> int:
         with open(SCHEDULE_DATABASE_NAME, "r") as file:
             schedule = json.load(file)
+        # закриваємо файл, щоб віддати ресурси
+        self.counter = 0
 
-            for day in schedule:
-                    day = schedule[day]
-                    self.__checker_day__(day, discipline)
+        for day in schedule:
+            day = schedule[day]
+            self.__checker_day__(day, discipline)
+
         return self.counter
 
     def __checker_day__(self, day: dict, discipline: str):
@@ -60,8 +63,10 @@ class User:
 
             with open(USER_DATABASE_NAME, "w") as file:
                 json.dump(data, file, indent=2)
+
+            self.disciplines.append(discipline)
+
             print(f"You was successfully enrolled to {discipline}")
-            self.__print_schedule__()
 
             return True
         else:
@@ -111,24 +116,21 @@ class User:
                     print(f"You was not enrolled on {discipline}")
                     return False
 
-    def __print_schedule__(self):
-        self.__re_read__()
-        self.schedule.create_window(6, 6, 12, 4)
-        self.schedule.input_week_lessons(self.week.schedule_for_user(self.disciplines))
-        self.schedule.print_window(" ", " ")
-
     def leave(self, discipline):
         if not discipline in self.disciplines:
             print("You are not enrolled to this discipline")
             return False
         else:
             with open(USER_DATABASE_NAME, "r") as file:
-                dct = json.load(file)
-            user = dct[self.name]
+                user_data = json.load(file)
+
+            user = user_data[self.name]
             user["courses"].remove(discipline)
-            dct[self.name].update(user)
+            user_data[self.name].update(user)
+
             with open(USER_DATABASE_NAME, "w") as file:
-                json.dump(dct, file, indent=2, ensure_ascii=False)
-                self.__print_schedule__()
+                json.dump(user_data, file, indent=2, ensure_ascii=False)
+
+            self.disciplines.remove(discipline)
             print("Leaved successfully")
             return True
