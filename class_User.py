@@ -16,30 +16,44 @@ class User:
 
     def __str__(self):
         self.__re_read__()
-        return f"{self.name} is on {self.program} and enrolled to {self.disciplines}"
+        disciplines_str = " ".join(self.disciplines)
+
+        return f"{self.name} is on {self.program} and enrolled to {disciplines_str}"
 
     def __re_read__(self):
         with open(USER_DATABASE_NAME, "r") as file:
             data = json.load(file)
             self.disciplines = data[self.name]["courses"]
 
-    def __checker__(self, discipline: str) -> int:
+    def __checker__(self, discipline: str):
+        """
+        перевіряє чи пересікається discipline з нашими дисцепліною
+        якщо не пересікається, то до self.counter додаємо 1
+
+        :param discipline: програма яку ми перевіряємо
+        """
         with open(SCHEDULE_DATABASE_NAME, "r") as file:
             schedule = json.load(file)
         # закриваємо файл, щоб віддати ресурси
         self.counter = 0
 
         for day in schedule:
-            day = schedule[day]
-            self.__checker_day__(day, discipline)
+            day_data = schedule[day]
+            self.__checker_day__(day_data, discipline)
 
-        return self.counter
+    def __checker_day__(self, day_data: dict, discipline: str):
+        """
+        перевіряє чи пересікається discipline з нашими дисцепліною для певного дня
+        якщо не пересікається, то до self.counter додаємо 1
 
-    def __checker_day__(self, day: dict, discipline: str):
-        for pair in day:
-            pair = day[pair]
+        :param day_data: данні дляпевного
+        :param discipline: програма яку ми перевіряємо
+        """
 
-            for room in pair:
+        for pair in day_data:
+            pair_data = day_data[pair]
+
+            for room in pair_data:
 
                 for mine in self.disciplines:
                     if mine in pair.values():
@@ -52,11 +66,11 @@ class User:
                 else:
                     continue
 
-    def __help_enroll__(self, counter, discipline):
-        if counter == 1:
+    def __help_enroll__(self, discipline):
+        if self.counter == 1 or self.counter == 0:
             print(f"No way you can visit {discipline}")
 
-        elif counter == 2:
+        elif self.counter == 2:
             with open(USER_DATABASE_NAME, "r") as file:
                 data = json.load(file)
             data[self.name]["courses"].append(discipline)
@@ -70,39 +84,38 @@ class User:
 
             return True
         else:
+            print("something went wrong")
             return False
         return False
 
-    def __help_enroll_2__(self, discipline, counter):
-        discipline = list(discipline)
-        if discipline[-1] == "1":
-            discipline[-1] = "2"
-            dis = "".join(discipline)
-            counter2 = self.__checker__(dis)
-            print(counter2)
-            counter += counter2
+    def __help_enroll_2group__(self, discipline_to_enroll: str):
+        discipline_to_enroll = list(discipline_to_enroll)
 
-            if not self.__help_enroll__(counter, dis):
-                print(f"You was not enrolled on {dis}")
+        # міняємо 1 групу на 2
+        if discipline_to_enroll[-1] == "1":
+            discipline_to_enroll[-1] = "2"
+        # міняємо 2 групу на 1
+        elif discipline_to_enroll[-1] == "2":
+            discipline_to_enroll[-1] = "1"
+        
+        dis = "".join(discipline_to_enroll)
 
-        elif discipline[-1] == "2":
-            discipline[-1] = "1"
-            dis = "".join(discipline)
-            counter2 = self.__checker__(dis)
-            counter += counter2
+        # перевіряємо для другої групи
+        self.__checker__(dis)
 
-            if not self.__help_enroll__(counter, dis):
-                print(f"You was not enrolled on {dis}")
-
+        if not self.__help_enroll__(dis):
+            print(f"You was not enrolled on {dis}")
+            
+        
+        
 
     def enroll(self, discipline):
         if discipline in self.disciplines:
             print("Student is already enrolled on this discipline")
             return False
         else:
-            counter = self.__checker__(discipline)
-            print(counter)
-            result = self.__help_enroll__(counter, discipline)
+            self.__checker__(discipline)
+            result = self.__help_enroll__(discipline)
             if result:
                 return True
             else:
@@ -110,7 +123,7 @@ class User:
                 answers = lst_input_to_int(["Yes", "No"])
 
                 if answers == 1:
-                    self.__help_enroll_2__(discipline, counter)
+                    self.__help_enroll_2group__(discipline)
                     return False
                 else:
                     print(f"You was not enrolled on {discipline}")
