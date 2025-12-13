@@ -59,10 +59,10 @@ class User:
             data[self.name]["courses"].append(discipline)
 
             with open(USER_DATABASE_NAME, "w") as file:
-                json.dump(data, file, indent=2)
+                json.dump(data, file, indent=2, ensure_ascii=False)
             print(f"You was successfully enrolled to {discipline}")
+            self.counter = 0
             self.__print_schedule__()
-
             return True
         else:
             return False
@@ -74,7 +74,6 @@ class User:
             discipline[-1] = "2"
             dis = "".join(discipline)
             counter2 = self.__checker__(dis)
-            print(counter2)
             counter += counter2
 
             if not self.__help_enroll__(counter, dis):
@@ -96,7 +95,6 @@ class User:
             return False
         else:
             counter = self.__checker__(discipline)
-            print(counter)
             result = self.__help_enroll__(counter, discipline)
             if result:
                 return True
@@ -109,6 +107,7 @@ class User:
                     return False
                 else:
                     print(f"You was not enrolled on {discipline}")
+                    self.counter = 0
                     return False
 
     def __print_schedule__(self):
