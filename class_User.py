@@ -1,5 +1,7 @@
 from configuration import USER_DATABASE_NAME, SCHEDULE_DATABASE_NAME
 import json
+from class_Visual import Visual
+from class_WeekSchedule import WeekData
 
 class User:
     def __init__(self, name: str, program:str, disciplines: list):
@@ -7,9 +9,17 @@ class User:
         self.program = program
         self.disciplines = disciplines
         self.counter = 0
+        self.schedule = Visual()
+        self.week = WeekData("schedule.json", "subjects.json", "users.json")
 
     def __str__(self):
+        self.__re_read__()
         return f"{self.name} is on {self.program} and enrolled to {self.disciplines}"
+
+    def __re_read__(self):
+        with open(USER_DATABASE_NAME, "r") as file:
+            data = json.load(file)
+            self.disciplines = data[self.name]["courses"]
 
     def __checker__(self, discipline):
         with open(SCHEDULE_DATABASE_NAME, "r") as file:
@@ -23,12 +33,11 @@ class User:
 
                             for room in pair:
 
-                                for mine in self.disciplines:
+                                    for mine in self.disciplines:
+                                        if mine in pair.values():
+                                            break
 
-                                    if mine in pair.values():
-                                        continue
-
-                                    elif pair[room] == discipline and not pair[room] in self.disciplines:
+                                    if pair[room] == discipline and not pair[room] in self.disciplines:
                                         self.counter += 1
                                         continue
 
@@ -46,6 +55,7 @@ class User:
             with open(USER_DATABASE_NAME, "w") as file:
                 json.dump(data, file, indent=2)
             print(f"You was successfully enrolled to {discipline}")
+            self.__print_schedule__()
             return True
         else:
             return False
@@ -77,6 +87,7 @@ class User:
             return False
         else:
             counter = self.__checker__(discipline)
+            print(counter)
             result = self.__help_enroll__(counter, discipline)
             if result:
                 return True
@@ -92,14 +103,24 @@ class User:
                     print(f"You was not enrolled on {discipline}")
                     return False
 
+    def __print_schedule__(self):
+        self.__re_read__()
+        self.schedule.create_window(6, 6, 12, 4)
+        self.schedule.input_week_lessons(self.week.schedule_for_user(self.disciplines))
+        self.schedule.print_window(" ", " ")
+
     def leave(self, discipline):
-        if not self.name in discipline.enrolled:
+        if not discipline in self.disciplines:
             print("You are not enrolled to this discipline")
+            return False
         else:
-            with open("USER_DATABASE_NAME", "a") as file:
-                for line in file.readlines():
-                    line = json.loads(line)
-                    dct = line[self.name]
-                    dct["courses"].remove(discipline)
-            discipline.enrolled.remove(self.name)
+            with open(USER_DATABASE_NAME, "r") as file:
+                dct = json.load(file)
+            user = dct[self.name]
+            user["courses"].remove(discipline)
+            dct[self.name].update(user)
+            with open(USER_DATABASE_NAME, "w") as file:
+                json.dump(dct, file, indent=2, ensure_ascii=False)
+                self.__print_schedule__()
             print("Leaved successfully")
+            return True
