@@ -218,6 +218,15 @@ class Visual:
 
             self.write_lst_to_coordinate(x_encoded_day, 4, ["", f"{day_centered.upper():}", "", ""])
 
+        for pair in ["Pair1", "Pair2", "Pair3", "Pair4"]:
+
+            y_encoded_day = pair_time_encoder[pair][0]
+
+            spaces = " " * ((self.block_width - len(day)) // 2)
+            day_centered = f"{spaces}{pair}{spaces}"
+
+            self.write_lst_to_coordinate(0, y_encoded_day, ["", f"{day_centered.upper():}", "", ""])
+
         for day in schedule_data:
             self.input_day_lessons(day, schedule_data[day])
 

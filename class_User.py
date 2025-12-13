@@ -59,9 +59,15 @@ class User:
 
             for room in pair_data:
 
+                free_time = True
                 for mine in self.disciplines:
                     if mine in pair_data.values():
+                        free_time = False
                         break
+                # якщо є накладка, то ви виходимо з цієї пари і йдем дальше
+                if not free_time:
+                    break
+
                 if pair_data[room] == discipline and not pair_data[room] in self.disciplines:
                     self.counter += 1
                     continue

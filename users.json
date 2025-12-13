@@ -256,9 +256,9 @@
     "password": "123",
     "program": "AI",
     "courses": [
-      "MATH115.2",
       "CS101.2",
-      "CS201.2"
+      "CS201.2",
+      "MATH115.1"
     ]
   }
 }

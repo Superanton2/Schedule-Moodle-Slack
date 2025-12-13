@@ -84,7 +84,7 @@ class Run:
         return new_lesson_day.capitalize(), new_lesson_name.upper(), new_lesson_time.capitalize()
 
     def run_admin(self):
-        self.create_schedule_window(admin= True)
+        # self.create_schedule_window(admin= True)
 
         while True:
             # вибір для адміна
@@ -111,10 +111,10 @@ class Run:
 
             print("\n")
             self.visual.print_window(" ", " ")
-        else:
-            self.visual.create_window(6, 6, 12, 16)
-            print("\n")
-            self.visual.print_window(" ", " ")
+        # else:
+            # self.visual.create_window(6, 6, 12, 16)
+            # print("\n")
+            # self.visual.print_window(" ", " ")
 
 
 def main():
