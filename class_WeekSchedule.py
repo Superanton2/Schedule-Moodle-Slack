@@ -14,7 +14,7 @@ class WeekData:
 
     def import_subjects(self):
         self.subjects = []
-        with open(self.subjects_file, "r") as f:
+        with open(self.subjects_file, "r", encoding="utf-8") as f:
             subjects_data = json.load(f)
             for subject in subjects_data:
                 self.subjects.append(subject)
@@ -75,7 +75,7 @@ class WeekData:
 
     def user_courses(self):
         self.users_courses = []
-        with open(self.users_file, "r") as f:
+        with open(self.users_file, "r", encoding="utf-8") as f:
             users_data = json.load(f)
             for user in users_data:
                 self.users_courses.append(users_data[user]["courses"])

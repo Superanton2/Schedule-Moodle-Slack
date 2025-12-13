@@ -19,7 +19,7 @@ class Login:
 
     def __try_find_user(self, user_login: str, password: str) -> bool:
         # open file to search for login
-        with open(USER_DATABASE_NAME, "r") as file:
+        with open(USER_DATABASE_NAME, "r", encoding="utf-8") as file:
 
             data = json.loads(file.read())
 
