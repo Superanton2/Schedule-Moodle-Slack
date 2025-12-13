@@ -222,47 +222,29 @@ class Visual:
             self.input_day_lessons(day, schedule_data[day])
 
 
-    # def clear_window(self):
-    #     os.system('cls' if os.name == 'nt' else 'clear')
+    def clear_window(self):
+        pass
 
+    def make_user_window(self):
+        pass
+
+    def make_admin_window(self):
+        pass
 
 # vis = Visual()
 # vis.create_window(6, 6, 12, 4)
-#
 #
 # # from configuration import LOGO
 #
 # # vis.write_lst_to_coordinate(0, 4, LOGO)
 # vis.write_lst_to_coordinate(0, 3, ["By Anton", "   Andrew", "   Katya"])
 #
-#
-#
-# data_mon = {"Pair1": {"1.08.01": "Math115"}}
-# vis.input_day_lessons("Monday", data_mon)
-#
-# data = {
-#   "Monday": {
-#     "Pair1": {"1.08.01": "Math115",},
-#     "Pair2": {"1.08.03": "Math111",},
-#     "Pair4": {"1.08.02": "Math101",}
-#   },
-#   "Tuesday": {
-#     "Pair3": {"1.08.01": "Math111",},
-#     "Pair4": {"1.08.01": "Math101",}
-#   }
-# }
-#
+# data = {{"Pair1": {"1.08.01": "Math115"}}}
 # vis.input_week_lessons(data)
 #
 # # vis.add_line_to_coordinate((0, 0), (1, 0))
 # # vis.add_line_to_coordinate((1, 1), (2, 1))
 #
 # vis.print_window(vertical_sep= "│", horizontal_sep= "─")
-# print()
-# print()
-# print()
 # vis.print_window(vertical_sep= "┃", horizontal_sep= "━")
-# print()
-# print()
-# print()
 # vis.print_window(vertical_sep= " ", horizontal_sep= " ")
