@@ -7,7 +7,6 @@ class WeekData:
         self.users_file = users_file
         self.schedule_file = schedule_file
         self.subjects_file = subjects_file
-        self.students = []
         self.import_data()
         self.import_subjects()
         self.user_courses()
@@ -145,6 +144,7 @@ class WeekData:
                             else:
                                 courses_in_schedule[day].update({time: {room: lesson}})
         return courses_in_schedule
+
 
 
 
