@@ -128,7 +128,6 @@ class Login:
 
         with open(USER_DATABASE_NAME, "r") as file:
             data = json.loads(file.read())
-            file_len = len(data)
 
         user_login = input("Enter your login: ")
         while user_login in data:

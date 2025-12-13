@@ -60,7 +60,7 @@ class User:
             for room in pair_data:
 
                 for mine in self.disciplines:
-                    if mine in pair.values():
+                    if mine in pair_data.values():
                         break
                 if pair_data[room] == discipline and not pair_data[room] in self.disciplines:
                     self.counter += 1

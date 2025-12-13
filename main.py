@@ -107,7 +107,6 @@ class Run:
             self.visual.create_window(6, 6, 12, 4)
             self.visual.input_week_lessons(self.week.schedule_for_user(self.user.disciplines))
             self.visual.write_lst_to_coordinate(0, 4, ["SCHEDULE by", "Anton", "Andrew", "Kateryna"])
-            self.visual.write_lst_to_coordinate(0, 4, ["SCHEDULE by", "Anton", "Andrew", "Kateryna"])
 
 
             print("\n")
