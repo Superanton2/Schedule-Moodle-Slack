@@ -79,7 +79,7 @@ class User:
         if self.counter == 1 or self.counter == 0:
             print(f"No way you can visit {discipline}")
 
-        elif self.counter == 2:
+        elif self.counter >= 2:
             with open(USER_DATABASE_NAME, "r", encoding="utf-8") as file:
                 data = json.load(file)
             data[self.name]["courses"].append(discipline)
